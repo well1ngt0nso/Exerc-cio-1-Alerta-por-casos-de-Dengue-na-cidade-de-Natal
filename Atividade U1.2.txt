@@ -1,0 +1,88 @@
+/*
+ NOME:            ALERTA POR CASOS DE DENGUE NA CIDADE DE NATAL
+VERSÃO:                  1.0
+DESCRIÇÃO:       Comparador entre as médias de casos passados e atual 
+DATA DA CRIAÇÃO:           30/09/2022
+ESCRITO POR:              Wellington S. O.
+E-MAIL:           wellington.oliveira.708@ufrn.edu.br
+DISTRO:           Windows 10
+LICENÇA:                *****
+PROJETO:    https://github.com/Well2002/Exerc-cio-1-Alerta-por-casos-de-Dengue-na-cidade-de-Natal.git
+*/
+#include <stdio.h>
+#include<stdlib.h>
+/*
+Acabei ficando em dúvida se era necessário pedir o valor da média passada toda vez ou ir utilizando o valor atualizado fornecido, pensando nisso implementei as duas formas
+*/
+int main(void) {
+/*
+Esse valor negativo na variável "medPa" é apenas para o algoritmo entender que é o primeiro ciclo no while, se for, o algoritmo pede a média passada e se não for ele vai fornecer duas opções. A estrutura condicional toma como base se a média é negativa ou não, no caso do nosso algoritmo não existe essa possibilidade a não se for fornecido valor negativo, o que não vem ao caso. Após o primeiro ciclo o valor de "medPa" é sempre positivo, ou seja, sempre irá fornecer duas opçoes de acordo com a condição.
+*/
+    float medPa = -3, medAt;
+    float seg, ter, qua, qui, sex;
+    int opcao;
+  printf("************************************************** \n\n");
+    printf("ALERTA POR CASOS DE DENGUE NA CIDADE DE NATAL \n\n");
+    printf("************************************************** \n\n");
+  
+  while (1) {
+  
+    // Condição para fornecer ou não as duas opçoes:
+    if(medPa < 0){
+  printf("Digite a média de casos da semana anterior:  ");
+    scanf("%f", &medPa);
+       printf("\n\n");
+      }
+    else{
+
+      // tem como objetivo deixar o código mais limpo após o reusltado, só imprime as demais coisas após receber um valor, pode ser colocado como comentário para ver como era antes
+     printf("Digite qualquer caractere e pressione a tecla ENTER para continuar >>>>>");
+     char a;
+      scanf("%s", &a);
+      printf("\n************************************************** \n\n");
+    printf("ALERTA POR CASOS DE DENGUE NA CIDADE DE NATAL \n\n");
+    printf("************************************************** \n\n");
+      
+      printf("Deseja inserir uma nova média de casos para a semana passada ou utilizar o valor médio com base nos dados fornecidos anteriormente? \n\n");
+      
+    printf("* OPÇÃO 1: NOVO VALOR MÉDIO PASSADO \n");
+    printf("* OPÇÃO 2: MÉDIA DOS VALORES FORNECIDOS ANTERIOR MENTE\n  ");
+      
+    scanf("%d", &opcao);
+      printf("\n\n");
+    // Caminho a ser tomado de acordo com a opção escolhida:
+      switch(opcao){
+        case 1:
+          printf("Digite a média de casos da semana anterior:  ");
+    scanf("%f", &medPa);
+      break;
+        case 2:
+          medPa = medAt;
+      break;
+      }
+    }
+    float a;
+    printf("Digite a quantidade de casos por dia sequencialmente, seja por linha ou na mesma linha separado por um espaço:\n\n");
+    
+    scanf("%f", &seg);
+    scanf("%f", &ter);
+    scanf("%f", &qua);
+    scanf("%f", &qui);
+    scanf("%f", &sex);
+    medAt = (seg + ter + qui + qua + sex) / 5;
+    
+    printf("\nA média de casos é: %0.2f \n", medAt);
+    
+  if(medPa == medAt){
+      printf("Estabilidade: média de casos da semana atual é igual aos valores da semana passada.\n \n");
+    }
+  else if(medPa > medAt){
+      printf("Em queda: média de casos da semana atual inferior aos valores da semana passada! \n \n");
+    }
+    
+  else{
+      printf("Alerta: média de casos na semana atual supera os valores da semana passada! \n \n");
+    } 
+  }
+  return 0;
+}
